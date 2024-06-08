@@ -1,0 +1,78 @@
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Iniciativa: Aumentar a Autonomia dos Desenvolvedores em Relação à Infraestrutura
+	Objetivo: Aumentar a autonomia dos times de desenvolvimento em relação à infraestrutura, reduzindo a dependência do time de SREs. Criando politicas e padrões, implantando ferramentas que garantam compliance e disseminando o conhecimento.	
+	Monitoramento e Métricas
+	- Taxa de Conclusão de Treinamento:
+	  - Percentual de desenvolvedores que completaram o curso de introdução à cloud computing.
+	  - Meta: 100%
+	- Número de Projetos Autônomos:
+	  - Percentual de projetos de desenvolvimento gerenciados diretamente pelos desenvolvedores.
+	  - Meta: 70%
+	- Conformidade com Políticas de Segurança:
+	  - Percentual de recursos de infraestrutura em conformidade com as políticas de segurança estabelecidas.
+	  - Meta: 100%
+
+Épico 1: Garantir Segurança e Conformidade na Gestão de Infraestrutura
+
+Upstream: Definição das politicas, controles e padrões
+	Objetivo: Estudar os baselines, politicas e processos da Serasa. Definir os nossos padrões, regras, controles para uso das contas cloud para a tribe de maneira geral.
+
+Spike 1.1: Avaliação do IAM no EEC
+	Objetivo: Avaliação do funcionamento e a aplicabilidade do IAM para aumentar a segurança e governança das contas cloud:
+	- Validar qual nível de granularidade as Roles e Policies podem chegar. (Por exemplo, é possível definir quais tipos de instancias podem ser criadas? É possível bloquear a criação de bucket s3 sem criptografia ativada? É possível bloquear a criação de um recurso sem uma tag obrigatória? É possível criar Roles para grupos menores de usuários?)
+	- Validar a aplicabilidade com o modelo "git centric".
+	- Validar a aplicabilidade das descobertas no EEC, considerando todas os meios de acesso (cli, console, IaC...).
+
+Spike 1.2: Aprimoramento da gestão de recursos na AWS
+	Objetivo: Buscar ferramentas ou serviços da AWS que nos garantam compliance com nossas politicas de maneira automatizada.
+	- Validar aplicabilidade com FinOps. (Por exemplo, a identificação e desativação de recursos idle)
+	- Validar a possibilidade de tagging reativo. (Por exemplo, novas tags que precisam ser aplicadas em todo o ambiente)
+	- Validar aspectos de conformidade de segurança. (Por exemplo, ativar uma nova configuração que passou a ser obrigatória em nosso TSB)
+	- Validar a aplicabilidade com o modelo "git centric".
+	- Validar possíveis barreiras da Serasa
+
+História 1.3: POC IAM
+	Objetivo: Uso do IAM para aumentar a segurança e governança das contas cloud
+	Etapas:
+	- Revisar a documentação oficial do EEC de forma a termos clareza sobre as politicas e ciclos de release.
+	- Configuração e utilização numa conta de testes.
+	- Implementar políticas básicas de segurança e governança (ex. criar apenas recursos autorizados, evitar a edição de recursos de outros grupos, impossibilitar a exclusão de certos recursos)
+ 	- Avaliar a eficácia e o impacto dessas políticas.
+	- Simular o acesso dos desenvolvedores.
+	- Avaliar possíveis impactos operacionais.
+	- Uso da abordagem "git centric".
+	- Documentar o processo, desafios e resultados obtidos.
+	- Apresentação dos resultados e discussão com a equipe.
+	Critérios de aceitação:
+	- Pelo menos três políticas de governança implementadas e testadas.
+	- Documentação detalhada do processo de configuração, implementação das políticas e avaliação de resultados.
+	- Reunião realizada e feedback da equipe documentado.
+	Dicas:
+	Clareza nas Políticas: Defina claramente quais políticas de governança você deseja testar e certifique-se de que sejam relevantes para a infraestrutura atual.
+	Documentação e Comunicação: Documente todo o processo de configuração e teste e compartilhe regularmente o progresso com a equipe.
+	Avaliação dos Resultados: Analise não apenas a eficácia das políticas, mas também os potenciais impactos negativos ou desafios operacionais introduzidos.
+	Feedback Iterativo: Utilize o feedback da equipe para ajustar as políticas ou explorar funcionalidades adicionais.
+	
+
+História 1.4: POC Ferramenta X
+	Objetivo: Testar o funcionamento e a aplicabilidade da Ferramenta X para aprimoramento da gestão de recursos na AWS:
+	Etapas:
+	- Instalação, configuração e utilização da ferramenta num ambiente de teste da Serasa.
+	- Implementar políticas básicas de governança (ex. desligar instâncias não utilizadas, aplicar tags obrigatórias).
+	- Avaliar a eficácia e o impacto dessas políticas.
+	- Avaliar possíveis impactos operacionais.
+	- Uso da abordagem "git centric".
+	- Documentar o processo, desafios e resultados obtidos.
+	- Apresentação dos resultados e discussão com a equipe.
+	Critérios de aceitação:
+	- Ferramenta X configurada e operacional no ambiente de teste.
+	- Pelo menos três políticas de governança implementadas e testadas.
+	- Documentação detalhada do processo de configuração, implementação das políticas e avaliação de resultados.
+	- Reunião realizada e feedback da equipe documentado.
+	Dicas:
+	Clareza nas Políticas: Defina claramente quais políticas de governança você deseja testar e certifique-se de que sejam relevantes para a infraestrutura atual.
+	Documentação e Comunicação: Documente todo o processo de configuração e teste e compartilhe regularmente o progresso com a equipe.
+	Avaliação dos Resultados: Analise não apenas a eficácia das políticas, mas também os potenciais impactos negativos ou desafios operacionais introduzidos pela Ferramenta X.
+	Feedback Iterativo: Utilize o feedback da equipe para ajustar as políticas ou explorar funcionalidades adicionais da Ferramenta X.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
