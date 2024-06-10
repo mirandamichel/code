@@ -1,4 +1,6 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+AWS
+
 Iniciativa: Aumentar a Autonomia dos Desenvolvedores em Relação à Infraestrutura
 	Objetivo: Aumentar a autonomia dos times de desenvolvimento em relação à infraestrutura, reduzindo a dependência do time de SREs. Criando politicas e padrões, implantando ferramentas que garantam compliance e disseminando o conhecimento.	
 	Monitoramento e Métricas
@@ -75,4 +77,97 @@ História 1.4: POC Ferramenta X
 	Avaliação dos Resultados: Analise não apenas a eficácia das políticas, mas também os potenciais impactos negativos ou desafios operacionais introduzidos pela Ferramenta X.
 	Feedback Iterativo: Utilize o feedback da equipe para ajustar as políticas ou explorar funcionalidades adicionais da Ferramenta X.
 
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+EKS
+
+Iniciativa: Aumentar a maturidade do cluster Kubernetes
+	Objetivo: Aumentar a maturidade do cluster Kubernetes implementando políticas e controles de conformidade, promovendo boas práticas de disponibilidade, escalabilidade, confiabilidade, segurança e controle de custos, além de engajar e dar autonomia aos times de desenvolvimento.
+	Monitoramento e Métricas
+	- Implantação das Políticas de Conformidade:
+          - Percentual de aplicações e clusters em confirmidade com as novas políticas
+	  - Meta: 100%
+	- Taxa de Conclusão de Treinamento:
+	  - Percentual de desenvolvedores que completaram o curso de eks.
+	  - Meta: 100%
+	- Melhorar a Disponibilidade e Escalabilidade:**
+     	  - Número de incidentes relacionados à disponibilidade e escalabilidade
+	  - Meta: Redução em 50% no primeiro quarter
+	- Melhorar a Segurança:
+	  - Reduzir o número de vulnerabilidades
+	  - Meta: 100% das vulnerabilidade dentro do SLA
+	- FinOps
+     	  - Redução do custo operacional mensal (em $)
+
+Épico 1: Implementar Políticas de Conformidade
+
+Upstream: Mapear Requisitos de Conformidade
+	Objetivo: Identificar os requisitos de conformidade para disponibilidade, escalabilidade, confiabilidade, segurança e controle de custos.
+	Etapas:
+	- Validar nossas politicas e baselines.
+  	- Realizar sessões de brainstorming.
+  	- Documentar requisitos de conformidade.
+  	- Priorizar os requisitos identificados.
+	Critérios de Aceitação:
+  	- Documentação de requisitos de conformidade aprovada por stakeholders.
+  	- Lista priorizada de requisitos.
+
+História 1.1: Desenvolver Políticas de Conformidade
+	Objetivo: Criar políticas de conformidade baseadas nos requisitos identificados.
+	Etapas:
+  	- Redigir políticas de conformidade.
+  	- Revisar políticas com especialistas (tech leads).
+  	- Aprovar políticas com squad leads.
+	Critérios de Aceitação:
+  	- Políticas de conformidade documentadas e aprovadas.
+  	- Políticas revisadas por especialistas.
+
+Spike 1.3: Pesquisar Ferramentas de Compliance
+	Objetivo: Investigar as ferramentas de compliance disponíveis e suas funcionalidades.
+	Etapas:
+  	- Analisar as funcionalidades e integrações.
+  	- Selecionar ferramentas para testes.
+	- Validar aderencia as politicas identificadas na história 1.1:
+		- Validar aplicabilidade com FinOps. (Por exemplo, a identificação e desativação de recursos idle)
+		- Validar a labeling . (Por exemplo, novas labels que precisam ser obrigatóriamente aplicadas em todo o ambiente)
+		- Validar aspectos de conformidade de segurança. (Por exemplo, exigir o uso de imagens com aging máximo de 15 dias em ambiente de desenvolvimento)
+		- Validar a aplicabilidade com o modelo "git centric".
+	- Validar possíveis barreiras da Serasa
+	Critérios de Aceitação:
+  	- Relatório comparativo das ferramentas de compliance.
+  	- Recomendação de ferramentas para implementação.
+
+História 1.4: POC Ferramentas X
+	Objetivo: Testar o funcionamento e a aplicabilidade da Ferramenta X para aprimoramento do compliance com as politicas.	
+	Etapas:
+	- Instalação, configuração e utilização da ferramenta num ambiente de teste da Serasa.
+	- Implementar políticas básicas de governança (ex. convençãode nomes, labeling obrigatório, limits).
+	- Avaliar a eficácia e o impacto dessas políticas.
+	- Avaliar possíveis impactos operacionais.
+	- Uso da abordagem "git centric".
+	- Documentar o processo, desafios e resultados obtidos.
+	- Apresentação dos resultados e discussão com a equipe.
+	Critérios de Aceitação:
+  	- Ferramenta X configurada e testada.
+	- Pelo menos três políticas de governança implementadas e testadas.
+	- Documentação detalhada do processo de configuração, implementação das políticas e avaliação de resultados.
+	- Reunião realizada e feedback da equipe documentado.
+
+História 1.5: Plano e comunicação
+	Objetivo: Montar e colocar em prática um plano de comunicação sobre as mudanças que ocorrerão
+	Critério de Aceitação:
+	- Plano de comunicação criado.
+	- Documentação no confluence (FAQ, Guias e tutorias).
+
+História 1.6: Labels e annotations
+	Objetivo: Garantir que só ocorram deploys de aplicações com todas as labels obrigatórias
+	- Labels Obrigatórias:
+	  - AppID	
+	  - Squad
+	  - Project
+	  - Business Service
+	Critério de Aceitação:
+	- Seguir o plano de comunicação.
+	- Politicas aplicadas em todos os clusters EKS.
+	- Documentação ou pepasse de conhecimento á todo o time.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
