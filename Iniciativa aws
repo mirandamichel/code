@@ -1,0 +1,22 @@
+### Resumo Executivo da Iniciativa: Aumentar a Autonomia dos Desenvolvedores em Relação à Infraestrutura
+
+**Contexto:**
+
+Atualmente, o time de desenvolvimento possui baixo envolvimento com assuntos relacionados à infraestrutura, resultando em uma alta dependência do time de SREs para a implementação e gestão de recursos de infraestrutura. Esta dependência limita a autonomia dos desenvolvedores, aumentando o tempo de entrega dos projetos e reduzindo a eficiência geral da equipe.
+
+**Objetivo:**
+
+O objetivo desta iniciativa é aumentar a autonomia dos times de desenvolvimento em relação à infraestrutura, capacitando-os a gerenciar seus próprios recursos cloud. Isso será alcançado através de treinamento específico em cloud computing, implementação de processos claros, e ferramentas adequadas para garantir a segurança e conformidade dos recursos.
+
+**Metas:**
+
+1. **Meta de Conhecimento:**
+   - Capacitar 100% dos desenvolvedores com conhecimentos básicos sobre infraestrutura cloud, utilizando o curso AWS Practitioner, dentro de 3 meses.
+
+2. **Meta de Autonomia:**
+   - Atingir 70% dos projetos de desenvolvimento gerenciados diretamente pelos desenvolvedores, sem intervenção direta dos SREs, em um prazo de 6 meses.
+
+3. **Meta de Segurança e Conformidade:**
+   - Implementar políticas automatizadas de segurança que cubram 100% dos recursos criados pelos desenvolvedores, garantindo a conformidade, em até 4 meses.
+
+Este plano detalha um roadmap com atividades específicas e spikes para investigar e avaliar as melhores ferramentas de automação e monitoramento, garantindo uma transição eficaz e segura para uma maior autonomia dos desenvolvedores.
