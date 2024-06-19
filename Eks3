@@ -1,0 +1,30 @@
+#!/bin/bash
+
+echo "Namespace,Deployment,Replicas,Liveness,Readiness,CPU Limits,Memory Limits,HPA"
+
+# Get all deployments and namespaces in a single kubectl call
+deployments=$(kubectl get deploy -A -o jsonpath='{.items[*].{namespace,metadata.name}}')
+
+# Loop through deployments
+for dep in $deployments; do
+  # Split namespace and name from the combined output
+  ns=$(echo $dep | cut -d ',' -f1)
+  deploy=$(echo $dep | cut -d ',' -f2)
+
+  # Get replicas, liveness, readiness, CPU limits, and memory limits in a single kubectl call
+  info=$(kubectl get deploy -n "$ns" "$deploy" -o jsonpath='{.spec.replicas, .spec.template.spec.containers[*].{livenessProbe.httpGet.path, readinessProbe.httpGet.path}, .spec.template.spec.containers[*].resources.limits.{cpu,memory}}')
+
+  # Split information from the combined output (assuming a single container)
+  replicas=$(echo $info | cut -d ',' -f1)
+  liveness=$(echo $info | cut -d ',' -f2)
+  readiness=$(echo $info | cut -d ',' -f3)
+  cpu_limits=$(echo $info | cut -d ',' -f4)
+  memory_limits=$(echo $info | cut -d ',' -f5)
+
+  # Get HPA using a separate kubectl call (can be optimized if fetching all HPAs at once is feasible)
+  hpa=$(kubectl get hpa -n "$ns" -o jsonpath="{.items[?(@.spec.scaleTargetRef.name=='$deploy')].spec}")
+  if [ -z "$hpa" ]; then hpa="None"; fi
+
+  # Print information
+  echo "$ns,$deploy,$replicas,$liveness,$readiness,$cpu_limits,$memory_limits,$hpa"
+done
