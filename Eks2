@@ -1,0 +1,35 @@
+#!/bin/bash
+
+echo "Namespace,Deployment,Replicas,Liveness,Readiness,CPU Limits,Memory Limits,HPA"
+
+namespaces=$(kubectl get ns -o jsonpath='{.items[*].metadata.name}')
+
+for ns in $namespaces; do
+  deployments=$(kubectl get deploy -n $ns -o jsonpath='{range .items[*]}{.metadata.name}{" "}{.spec.replicas}{" "}{.spec.template.spec.containers[*].livenessProbe}{" "}{.spec.template.spec.containers[*].readinessProbe}{" "}{.spec.template.spec.containers[*].resources.limits.cpu}{" "}{.spec.template.spec.containers[*].resources.limits.memory}{"\n"}{end}')
+  hpas=$(kubectl get hpa -n $ns -o jsonpath='{range .items[*]}{.spec.scaleTargetRef.name}{" "}{.spec.minReplicas}{"-"}{.spec.maxReplicas}{"\n"}{end}')
+  
+  declare -A hpa_map
+  while IFS= read -r line; do
+    name=$(echo $line | cut -d' ' -f1)
+    hpa_values=$(echo $line | cut -d' ' -f2)
+    hpa_map[$name]=$hpa_values
+  done <<< "$hpas"
+  
+  while IFS= read -r line; do
+    deploy=$(echo $line | cut -d' ' -f1)
+    replicas=$(echo $line | cut -d' ' -f2)
+    liveness=$(echo $line | cut -d' ' -f3)
+    readiness=$(echo $line | cut -d' ' -f4)
+    cpu_limits=$(echo $line | cut -d' ' -f5)
+    memory_limits=$(echo $line | cut -d' ' -f6)
+    
+    # Handle null values
+    if [ -z "$liveness" ]; then liveness="None"; fi
+    if [ -z "$readiness" ]; then readiness="None"; fi
+    if [ -z "$cpu_limits" ]; then cpu_limits="None"; fi
+    if [ -z "$memory_limits" ]; then memory_limits="None"; fi
+    if [ -z "${hpa_map[$deploy]}" ]; then hpa="None"; else hpa=${hpa_map[$deploy]}; fi
+    
+    echo "$ns,$deploy,$replicas,$liveness,$readiness,$cpu_limits,$memory_limits,$hpa"
+  done <<< "$deployments"
+done
